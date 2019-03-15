@@ -28,7 +28,4 @@ See [CONTRIBUTING.md](https://github.com/emberjs/ember.js/blob/master/CONTRIBUTI
 
 Cross-browser testing provided by:
 
-<a href="http://browserstack.com">
-  
-  ![browserstack](http://www.browserstack.com/images/layout/browserstack-logo-600x315.png)
-  </a>
+<a href="http://browserstack.com"><img height="70" src="http://www.browserstack.com/images/layout/browserstack-logo-600x315.png" alt="BrowserStack"></a>
