@@ -393,7 +393,7 @@ function makeClosureAction(
       if (EMBER_NATIVE_DECORATOR_SUPPORT) {
         warn(
           `You passed a method, ${debugKey}, to the {{action}} helper which was not decorated with the '@action' decorator. All actions should be decorated with the '@action' decorator.`,
-          action[ACTION_METHOD] === true,
+          action[ACTION_METHOD] === true || action[ACTION] === true,
           {
             id: 'action-without-decorator',
           }

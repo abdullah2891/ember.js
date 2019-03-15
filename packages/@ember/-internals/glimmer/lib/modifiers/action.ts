@@ -14,7 +14,7 @@ import {
   ModifierManager,
 } from '@glimmer/runtime';
 import { Destroyable } from '@glimmer/util';
-import { ACTION_METHOD, INVOKE } from '../utils/references';
+import { ACTION, ACTION_METHOD, INVOKE } from '../utils/references';
 
 const MODIFIERS = ['alt', 'shift', 'meta', 'ctrl'];
 const POINTER_EVENT_TYPE_REGEX = /^click|mouse|touch/;
@@ -224,7 +224,9 @@ export default class ActionModifierManager implements ModifierManager<ActionStat
         if (EMBER_NATIVE_DECORATOR_SUPPORT) {
           warn(
             `You passed a method, ${actionLabel}, to the {{action}} modifier which was not decorated with the '@action' decorator. All actions should be decorated with the '@action' decorator.`,
-            !(typeof actionName === 'function') || actionName[ACTION_METHOD] === true,
+            !(typeof actionName === 'function') ||
+              actionName[ACTION_METHOD] === true ||
+              actionName[ACTION] === true,
             {
               id: 'action-without-decorator',
             }

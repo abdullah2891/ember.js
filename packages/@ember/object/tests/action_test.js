@@ -261,6 +261,38 @@ if (EMBER_NATIVE_DECORATOR_SUPPORT) {
           this.render('{{foo-bar}}');
         }, "You passed a method, foo, to the {{action}} helper which was not decorated with the '@action' decorator. All actions should be decorated with the '@action' decorator.");
       }
+
+      '@test action modifier does not warn if passed an action'() {
+        class FooComponent extends Component {
+          @action
+          foo() {}
+        }
+
+        this.registerComponent('foo-bar', {
+          ComponentClass: FooComponent,
+          template: '<button {{action (action "foo")}}>Click Me!</button>',
+        });
+
+        return expectNoWarning(() => {
+          this.render('{{foo-bar}}');
+        });
+      }
+
+      '@test action helper does not warn if passed an action'() {
+        class FooComponent extends Component {
+          @action
+          foo() {}
+        }
+
+        this.registerComponent('foo-bar', {
+          ComponentClass: FooComponent,
+          template: '<button onclick={{action (action "foo")}}>Click Me!</button>',
+        });
+
+        return expectNoWarning(() => {
+          this.render('{{foo-bar}}');
+        });
+      }
     }
   );
 }
